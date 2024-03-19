@@ -1,0 +1,9 @@
+{
+  "name": "Inventory-Backend",
+  "version": "1.0.0",
+  "description": "inventory for ayush inventory",
+  "main": "index.js",
+  "repository": "https://github.com/Naveen-g09/Inventory-Backend.git",
+  "author": "Naveen <naveengummella.rg@gmail.com>",
+  "license": "MIT"
+}
