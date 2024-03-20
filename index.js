@@ -46,6 +46,43 @@ app.post('/post-medicine', (req, res) => {
     })
 })
 
+app.put('/update-medicine', (req, res) => {
+    const { id, quantity } = req.body;
+    db.query('UPDATE medicine SET quantity = $1 WHERE id = $2', [quantity, id], (err, result) => {
+        if (err) {
+            console.log(err.stack)
+        } else {
+            res.send('Data updated successfully')
+        }
+    })
+})
+
+//TODO: add route to get medicine whose column of is_less is true
+
+app.get('/get-less-medicine', (req, res) => {
+    db.query('SELECT * FROM medicine WHERE is_less = true', (err, result) => {
+        if (err) {
+            console.log(err.stack)
+        } else {
+            res.send(result.rows)
+        }
+    })
+}
+)
+
+app.delete('/delete-medicine', (req, res) => {
+    const { id } = req.body;
+    db.query('DELETE FROM medicine WHERE id = $1', [id], (err, result) => {
+        if (err) {
+            console.log(err.stack)
+        } else {
+            res.send('Data deleted successfully')
+        }
+    })
+})
+
+
+
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`)
 })
