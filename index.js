@@ -82,6 +82,33 @@ app.delete('/delete-medicine', (req, res) => {
 })
 
 
+//TODO: add a route to update the contacts table (create if not pre-existing) where user inserts name company and phone number
+
+app.post('/post-contacts', (req, res) => {
+    const { name, company, phone } = req.body;
+    db.query('INSERT INTO contacts (name, company, phone) VALUES ($1, $2, $3)', [name, company, phone], (err, result) => {
+        if (err) {
+            console.log(err.stack)
+        } else {
+            res.send('Data added successfully')
+        }
+    })
+})
+
+
+//fetch contacts
+app.get('/get-contacts', (req, res) => {
+    db.query('SELECT * FROM contacts', (err, result) => {
+        if (err) {
+            console.log(err.stack)
+        } else {
+            res.send(result.rows)
+        }
+    })
+})
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`)
