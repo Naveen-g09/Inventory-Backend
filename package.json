@@ -1,5 +1,5 @@
 {
-  "name": "Inventory-Backend",
+  "name": "@inventory/backend",
   "version": "1.0.0",
   "description": "inventory for ayush inventory",
   "main": "index.js",
